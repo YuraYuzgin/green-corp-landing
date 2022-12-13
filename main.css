@@ -9,6 +9,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
+    position: sticky;
+    background-color: #fff;
+    top: 0;
+    z-index: 1;
 }
 
 .header__logo {
@@ -42,9 +46,24 @@ button {
     width: 500px;
 }
 
+@keyframes rotation {
+    0% {
+        transform: rotate(0);
+    }
+    100$ {
+        transform: rotate(360deg);
+    }
+}
+
 .about__sun-image {
     width: 100px;
     height: 100px;
+    animation-name: rotation;
+    transform: rotate(360deg);
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    position: absolute;
 }
 
 .about {
