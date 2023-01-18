@@ -150,6 +150,7 @@ button {
 .features__border {
     margin-top: 50px;
     margin-bottom: 50px;
+    width: 100%;
     border: 1px solid #E6EAF4;
 }
 
@@ -256,6 +257,7 @@ button {
     font-size: 18px;
     padding: 15px 30px;
     font-weight: 600;
+    box-shadow: 0 16px 36px rgb(16 122 28 / 30%);
 }
 
 .promo__right__card__button .fa-chevron-right {
