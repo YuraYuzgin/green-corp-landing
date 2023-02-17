@@ -3,9 +3,9 @@ const BUBBLE_DENSITY = 100;
 
 function generateDecimalBetween(left, right) {
     return (Math.random() * (left - right) + right).toFixed(2);
-}
+ }
 
-class Bubble {
+ class Bubble {
     constructor(canvas) {
         this.canvas = canvas;
         this.getCanvasSize();
@@ -19,8 +19,8 @@ class Bubble {
 
     init() {
         this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-        this.size = generateDecimalBetween(1, 3);
         this.alpha = generateDecimalBetween(5, 10) / 10;
+        this.size = generateDecimalBetween(1, 3);
         this.translateX = generateDecimalBetween(0, this.canvasWidth);
         this.translateY = generateDecimalBetween(0, this.canvasHeight);
         this.velocity = generateDecimalBetween(20, 40);
@@ -31,7 +31,7 @@ class Bubble {
     move() {
         this.translateX = this.translateX - this.movementX;
         this.translateY = this.translateY - this.movementY;
-
+ 
         if (this.translateY < 0 || this.translateX < 0 || this.translateX > this.canvasWidth) {
             this.init();
             this.translateY = this.canvasHeight;
@@ -53,20 +53,21 @@ class CanvasBackground {
     }
 
     canvasSize() {
-        this.canvas.width = this.canvas.offsetWidth * this.dpr;
-        this.canvas.height = this.canvas.offsetHeight * this.dpr;
-        this.ctx.scale(this.dpr, this.dpr);
-    }
+       this.canvas.width = this.canvas.offsetWidth * this.dpr;
+       this.canvas.height = this.canvas.offsetHeight * this.dpr;
+       this.ctx.scale(this.dpr, this.dpr);
+   }
 
-    generateBubbles() {
-        this.bubblesList = [];
-        for (let i = 0; i < BUBBLE_DENSITY; i++) {
-            this.bubblesList.push(new Bubble(this.canvas));
-        }
+   generateBubbles() {
+    this.bubblesList = [];
+    for (let i = 0; i < BUBBLE_DENSITY; i++) {
+        this.bubblesList.push(new Bubble(this.canvas))
     }
+}
 
     animate() {
         this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
+ 
         this.bubblesList.forEach((bubble) => {
             bubble.move();
             this.ctx.translate(bubble.translateX, bubble.translateY);
@@ -76,7 +77,7 @@ class CanvasBackground {
             this.ctx.fill();
             this.ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
         });
-
+ 
         requestAnimationFrame(this.animate.bind(this));
     }
 }
